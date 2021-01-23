@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="5dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/person"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="1dp"
+            android:background="@drawable/border"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_weight=".7"
+                android:layout_height="wrap_content">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="20dp">
+                    <ImageView
+                        android:id="@+id/personImg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/avatar"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_margin="1dp"
+                android:layout_weight=".3"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageButton
+                        android:id="@+id/cancelPerson"
+                        android:layout_width="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/white"
+                        android:src="@drawable/ic_cancel"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_margin="15dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/personName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Name"
+                                android:textColor="@color/black"
+                                android:textSize="25sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" , "
+                                android:textColor="@color/black"
+                                android:textSize="16sp"/>
+                            <TextView
+                                android:id="@+id/personAge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:textColor="@color/black"
+                                android:text="Age" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:id="@+id/personReligion"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Religion"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=" , "
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"/>
+                                <TextView
+                                    android:id="@+id/personCast"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/black"
+                                    android:text="Cast" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content">
+                                <!--                    <TextView-->
+                                <!--                        android:layout_width="wrap_content"-->
+                                <!--                        android:layout_height="wrap_content"-->
+                                <!--                        android:text="Location"-->
+                                <!--                        android:textColor="@color/black"-->
+                                <!--                        android:textSize="16sp"/>-->
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content">
+                                <!--                    <TextView-->
+                                <!--                        android:layout_width="wrap_content"-->
+                                <!--                        android:layout_height="wrap_content"-->
+                                <!--                        android:text=" : "-->
+                                <!--                        android:textColor="@color/black"-->
+                                <!--                        android:textSize="16sp"/>-->
+                                <TextView
+                                    android:id="@+id/personLocation"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/black"
+                                    android:text=" Hyderabad, Telangana, India" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <!--                <LinearLayout-->
+                            <!--                    android:layout_width="wrap_content"-->
+                            <!--                    android:layout_height="wrap_content">-->
+                            <!--                    -->
+
+                            <!--                </LinearLayout>-->
+                            <!--                <TextView-->
+                            <!--                    android:layout_width="wrap_content"-->
+                            <!--                    android:layout_height="wrap_content"-->
+                            <!--                    android:text="Occupation"-->
+                            <!--                    android:textColor="@color/black"-->
+                            <!--                    android:textSize="16sp"/>-->
+
+                            <!--                    <TextView-->
+                            <!--                        android:layout_width="wrap_content"-->
+                            <!--                        android:layout_height="wrap_content"-->
+                            <!--                        android:text=" : "-->
+                            <!--                        android:textColor="@color/black"-->
+                            <!--                        android:textSize="16sp"/>-->
+                            <TextView
+                                android:id="@+id/personOccupation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:textColor="@color/black"
+                                android:text="Banking / Financial Service / Insurance Service" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Login</string>
+    <string name="default_vale">na</string>
+    <string-array name="spinner_year">
+        <item>select</item>
+        <item>1976</item>
+        <item>1977</item>
+        <item>1978</item>
+        <item>1979</item>
+        <item>1980</item>
+    </string-array>
+    <string-array name="spinner_gender">
+        <item>select</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="spinner_date">
+        <item>select</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+    </string-array>
+    <string-array name="spinner_relation">
+        <item>select</item>
+        <item>single</item>
+        <item>divorced</item>
+        <item>widow</item>
+    </string-array>
+    <string-array name="spinner_religion">
+        <item>select</item>
+        <item>hindu</item>
+        <item>muslim</item>
+        <item>christian</item>
+    </string-array>
+    <string-array name="spinner_cast">
+        <item>select</item>
+        <item>Brahmani</item>
+        <item>Kshatriya</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+    </string-array>
+</resources>
