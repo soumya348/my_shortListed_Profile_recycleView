@@ -43,8 +43,6 @@ public class MyShortlistActivity extends AppCompatActivity {
 
         recyclerView=findViewById(R.id.myShortlistRecycler);
         recyclerView.setHasFixedSize(true);
-        myshort = findViewById(R.id.myshort);
-        soumya = findViewById(R.id.soumya);
 
         myShortlistActivityAdapter=new MyShortlistActivityAdapter(personProfiles,MyShortlistActivity.this);
         recyclerView.setAdapter(myShortlistActivityAdapter);
@@ -52,21 +50,25 @@ public class MyShortlistActivity extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(MyShortlistActivity.this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
-//
-//       for (int i=0;i<=10;i++){
-//           PersonProfile personProfile1=new PersonProfile("ProfilePic","MemberName"
-//                   ,"Age","Religion",
-//                   "Caste","Qualification","City");
-//           personProfiles.add(personProfile1);
-//           i++;
-//       }
 
+        SharedPreferences sharedPreferences=MyShortlistActivity.this.getSharedPreferences("logkey",MODE_PRIVATE);
+        logkey=sharedPreferences.getString("logkey","");
+        Toast.makeText(MyShortlistActivity.this, ""+logkey, Toast.LENGTH_SHORT).show();
+
+       for (int i=0;i<=10;i++){
+           PersonProfile personProfile1=new PersonProfile("ProfilePic","MemberName"
+                   ,"Age","Religion",
+                   "Caste","Qualification","City");
+           personProfiles.add(personProfile1);
+           i++;
+       }
+        UserLoginFunction(""+logkey);
 
     }
 
-    public void onClickSignInBtn(View view) {
-        UserLoginFunction(logkey);
-    }
+//    public void onClickSignInBtn(View view) {
+//        UserLoginFunction(""+logkey);
+//    }
     public void UserLoginFunction(final String Logkey){
 
         class UserLoginClass extends AsyncTask<String,Void,String> {
@@ -86,19 +88,23 @@ public class MyShortlistActivity extends AppCompatActivity {
 
                 progressDialog.dismiss();
 
+               // Toast.makeText(MyShortlistActivity.this,""+httpResponseMsg, Toast.LENGTH_SHORT).show();
+
                 if(httpResponseMsg!=null){
                     try {
 
-                        JSONObject jsonObject = new JSONObject(httpResponseMsg);
+                       // JSONObject jsonObject = new JSONObject(httpResponseMsg);
 
-                        JSONArray result = jsonObject.getJSONArray("{");
+                       // JSONArray result = jsonObject.getJSONArray("{");
+                        JSONArray result = new JSONArray(httpResponseMsg);
+
                         for (int i=0; i<result.length(); i++ ) {
                             JSONObject ob = result.getJSONObject(i);
-
-                            PersonProfile personProfile=new PersonProfile(ob.getString("ProfilePic"),ob.getString("MemberName")
-                                    ,ob.getString("Age"),ob.getString("Religion"),
-                                    ob.getString("Caste"),ob.getString("Qualification"),ob.getString("City"));
-                            personProfiles.add(personProfile);
+                            Toast.makeText(MyShortlistActivity.this, "" + ob.getString("MemberName"), Toast.LENGTH_SHORT).show();
+                            PersonProfile personProfile1=new PersonProfile("ProfilePic","MemberName"
+                                    ,"Age","Religion",
+                                    "Caste","Qualification","City");
+                            personProfiles.add(personProfile1);
 
                         }
                     } catch (JSONException e) {

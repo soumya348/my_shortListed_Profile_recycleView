@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
-
     EditText email,password;
     String HttpURL = "https://mob.odialagna.com/loginAction.php";
     Button signin;
@@ -35,59 +34,22 @@ public class MainActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     HttpParse httpParse = new HttpParse();
 
+    //  JsonHttpParse jsonhttpParse = new JsonHttpParse();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         email=findViewById(R.id.emailcontainer);
         password=findViewById(R.id.passwordcontainer);
         signin=findViewById(R.id.loginbtn);
 
-        Button button8 = findViewById(R.id.button);
-
-        button8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent int3 = new Intent(MainActivity.this,RegisterActivity.class);
-                startActivity(int3);
-            }
-        });
-
     }
 
     public void onClickSignInBtn(View view) {
-        CheckEditTextIsEmptyOrNot();
-
-        if(CheckEditText){
-
-            UserLoginFunction("login",stremail,strpassword);
-
-
-        }
-        else {
-
-            Toast.makeText(MainActivity.this, "Please fill all form fields.", Toast.LENGTH_LONG).show();
-
-        }
-
+        stremail=email.getText().toString().trim();
+        strpassword=password.getText().toString().trim();
+        UserLoginFunction("login",stremail,strpassword);
     }
-    public void CheckEditTextIsEmptyOrNot(){
-
-        stremail = email.getText().toString().trim();
-        strpassword = password.getText().toString().trim();
-
-        if(TextUtils.isEmpty(stremail) || TextUtils.isEmpty(strpassword))
-        {
-            CheckEditText = false;
-        }
-        else {
-
-            CheckEditText = true ;
-        }
-    }
-
-
     public void UserLoginFunction(final String act,final String username, final String password){
 
         class UserLoginClass extends AsyncTask<String,Void,String> {
@@ -107,25 +69,35 @@ public class MainActivity extends AppCompatActivity {
 
                 progressDialog.dismiss();
 
+                //    Toast.makeText(MainActivity.this, httpResponseMsg, Toast.LENGTH_SHORT).show();
+
                 if(httpResponseMsg.contains("ID")){
                     try {
-                        Toast.makeText(MainActivity.this, "Logged in successfully !", Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(MainActivity.this,MyShortlistActivity.class);
-                        startActivity(intent);
+                        // Toast.makeText(MainActivity.this, "hiiii", Toast.LENGTH_SHORT).show();
 
                         JSONObject jsonObject = new JSONObject(httpResponseMsg);
                         String LogKey=jsonObject.getString("LogKey");
-                        String UserID=jsonObject.getString("UserID");
                         // this is how we use sharedpref to save data
                         SharedPreferences sharedPreferences=MainActivity.this.getSharedPreferences("logkey",MODE_PRIVATE);
                         SharedPreferences.Editor editor=sharedPreferences.edit();
                         editor.putString("logkey",LogKey);
-                        editor.putString("UserID",UserID);
-
                         editor.apply();
+                        //  JSONArray result = jsonObject.getJSONArray("{");
+                        //  for (int i=0; i<result.length(); i++ ){
+                        //  JSONObject ob=result.getJSONObject(i);
+                        Toast.makeText(MainActivity.this, ""+LogKey, Toast.LENGTH_SHORT).show();
+                        //fetch image here and set to adapter
+                        // Toast.makeText(Login.this, ob.getString("name"), Toast.LENGTH_SHORT).show();
+                        // homemodel history=new homemodel(R.drawable.promocodecar2,ob.getString("img"),
+                        //ob.getString("service_name"),ob.getString("sch_servie_id"));
+                        // androidFlavors.add(history);
+                        //to check if user is already login or not
+                        Intent intent=new Intent(MainActivity.this,MyShortlistActivity.class);
+                        startActivity(intent);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                    //  Toast.makeText(Login.this, httpResponseMsg, Toast.LENGTH_SHORT).show();
 
 
                 }else{
@@ -146,10 +118,15 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             protected String doInBackground(String... params) {
-
+                //arr.add(params[0]);
+                // arr.add(params[1]);
+                // arr.add(params[2]);
                 hashMap.put("act",params[0]);
                 hashMap.put("username",params[1]);
                 hashMap.put("password",params[2]);
+                //  String jsonInputString="{\"act\":\"login\",\"username\":\"memberusername\",\"password\":\"memberpassword\"}";
+
+//                finalResult = jsonhttpParse.postRequest(method,Email,Password, HttpURL);
                 finalResult = httpParse.postRequest(hashMap,HttpURL);
 
                 return finalResult;
@@ -159,10 +136,6 @@ public class MainActivity extends AppCompatActivity {
         UserLoginClass userLoginClass = new UserLoginClass();
 
         userLoginClass.execute(act,username,password);
-    }
-    public void ForgotPasswordClick(View view){
-        Intent intent=new Intent(MainActivity.this,ForgotPasswordActivity.class);
-        startActivity(intent);
     }
 
 }
